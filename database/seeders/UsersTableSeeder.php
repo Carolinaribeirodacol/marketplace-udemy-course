@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Store;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -25,6 +26,12 @@ class UsersTableSeeder extends Seeder
         // ]);
 
         // -- Criação de múltiplos usuários fakes. -- //
-        User::factory()->count(40)->create();
+        // User::factory()->count(40)->create();
+
+        // Criação de uma loja pra cada usuário.
+        // Foi utilizado o save por ser um objeto, o create seria para array.
+        User::factory()->count(40)->create()->each(function ($user) {
+            $user->store()->save(Store::make());
+        });
     }
 }

@@ -22,11 +22,11 @@ class StoreFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
-            'phone' => $this->faker->phoneNumber,
-            'mobile_phone' => $this->faker->phoneNumber,
-            'slug' => $this->faker->slug,
-            'description' => $this->faker->sentence
+            'name' => $this->faker->name(),
+            'phone' => $this->faker->phoneNumber(),
+            'mobile_phone' => $this->faker->phoneNumber(),
+            'slug' => $this->faker->slug(),
+            'description' => $this->faker->sentence()
         ];
     }
 }
