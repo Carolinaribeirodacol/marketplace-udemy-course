@@ -31,7 +31,7 @@ class UsersTableSeeder extends Seeder
         // Criação de uma loja pra cada usuário.
         // Foi utilizado o save por ser um objeto, o create seria para array.
         User::factory()->count(40)->create()->each(function ($user) {
-            $user->store()->save(Store::make());
+            $user->store()->save(Store::factory()->make());
         });
     }
 }

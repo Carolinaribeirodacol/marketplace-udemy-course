@@ -28,7 +28,7 @@ Route::get('/', function () {
     return view('welcome', compact('helloWorld'));
 });
 
-Route::get('/model', function() {
+Route::get('/model', function () {
     // $products = Product::all();
 
     // return response()->json(array('products' => $products));
@@ -49,11 +49,40 @@ Route::get('/model', function() {
     //     'password' => bcrypt('12345')
     // ]);
 
-    $user = User::find(30);
-    
-    $user = $user->update([
-        'name' => 'Mudei de nome'
-    ]);
+    // $user = User::find(30);
 
-    dd($user);
+    // $user = $user->update([
+    //     'name' => 'Mudei de nome'
+    // ]);
+
+    // return User::all(); // retorna uma collection com todos os usuários.
+    // return User::find(3); // retorna um único usuário.
+    // return User::where('name', 'Tate Casper')->value('name'); // retorna usuários de acordo com uma determinada condição, o value pega só o valor passado.
+    // return User::where('name', 'Tate Casper')->get(); // retorna usuários de acordo com uma determinada condição.
+    // return User::where('name', 'Tate Casper')->first(); // retorna o primeiro resultado da condição.
+    // return User::paginate(10);
+
+    // -- Mass Assignment - Atribuição em massa -- //
+    // $user = User::create([
+    //     'name' => 'Rukado',
+    //     'email' => 'rukadoo@gmail.com',
+    //     'password' => bcrypt('123456')
+    // ]);
+
+    // dd($user);
+
+    // -- Mass Update - Atualização em massa -- //
+    // $user = User::find(41);
+    
+    // $user->update([
+    //     'name' => 'Amo meu amor'
+    // ]); // o update retorna true ou false.
+
+    // dd($user);
+
+    $user = User::find(4);
+
+    return $user->store()->count();
+
+    // return User::all();
 });

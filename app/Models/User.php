@@ -12,7 +12,7 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * Campos preenchíveis.
      *
      * @var string[]
      */
@@ -23,7 +23,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * Remove os atributos da listagem, para não serem visualizados.
      *
      * @var array
      */
@@ -33,12 +33,12 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast.
+     * Converte o atributo para o tipo especificado.
      *
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'email_verified_at' => 'datetime', // Converte para o tipo datetime.
     ];
 
     // Um usuário possui uma loja.
