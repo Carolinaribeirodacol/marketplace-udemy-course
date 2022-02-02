@@ -1,8 +1,6 @@
 <?php
 
-use App\Models\Product;
 use App\Models\User;
-use Illuminate\Foundation\Auth\User as AuthUser;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -86,3 +84,13 @@ Route::get('/model', function () {
 
     // return User::all();
 });
+
+Route::get('/admin/stores', 'App\Http\Controllers\Admin\StoreController@index');
+Route::get('/admin/stores/create', 'App\Http\Controllers\Admin\StoreController@create');
+Route::post('/admin/stores/store', 'App\Http\Controllers\Admin\StoreController@store');
+
+// get
+// put
+// patch
+// delete
+// options
