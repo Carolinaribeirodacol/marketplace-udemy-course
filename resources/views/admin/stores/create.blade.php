@@ -1,6 +1,8 @@
 <h1>Cadastrar loja:</h1>
 
-<form action="/admin/stores/store" method="post">
+<form action="/admin/stores/store" method="POST">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
+
     <div>
         <label>Loja</label>
         <input type="text" name="name" />
@@ -13,12 +15,12 @@
 
     <div>
         <label>Telefone</label>
-        <input type="text" name="phone" />
+        <input type="number" name="phone" />
     </div>
 
     <div>
         <label>Celular</label>
-        <input type="text" name="mobile-phone" />
+        <input type="number" name="mobile_phone" />
     </div>
 
     <div>
