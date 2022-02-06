@@ -71,7 +71,7 @@ Route::get('/model', function () {
 
     // -- Mass Update - Atualização em massa -- //
     // $user = User::find(41);
-    
+
     // $user->update([
     //     'name' => 'Amo meu amor'
     // ]); // o update retorna true ou false.
@@ -85,9 +85,20 @@ Route::get('/model', function () {
     // return User::all();
 });
 
-Route::get('/admin/stores', 'App\Http\Controllers\Admin\StoreController@index');
-Route::get('/admin/stores/create', 'App\Http\Controllers\Admin\StoreController@create');
-Route::post('/admin/stores/store', 'App\Http\Controllers\Admin\StoreController@store');
+Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->group(function () {
+    Route::prefix('stores')->group(function () {
+        Route::get('/', 'StoreController@index');
+        Route::get('/create', 'StoreController@create');
+        Route::post('/store', 'StoreController@store');
+        Route::get('/{store}/edit', 'StoreController@edit');
+        Route::post('/update/{store}', 'StoreController@update');
+    });
+});
+
+// prefix -> define uma parte de uma rota para um grupo que vai utilizar a mesma rota.
+
+// namespace -> define uma parte de um caminho para um grupo que vai
+// utilizar o mesmo caminho.
 
 // get
 // put
