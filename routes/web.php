@@ -94,6 +94,8 @@ Route::prefix('admin')->name('admin.')->namespace('App\Http\Controllers\Admin')-
         Route::post('/update/{store}', 'StoreController@update')->name('update');
         Route::get('/destroy/{store}', 'StoreController@destroy')->name('destroy');
     });
+
+    Route::resource('products', 'ProductController');
 });
 
 // prefix -> define uma parte de uma rota para um grupo que vai utilizar a mesma rota.
