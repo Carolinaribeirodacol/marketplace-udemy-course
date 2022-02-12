@@ -3,7 +3,7 @@
 @section('content')
 <h1>Cadastrar loja:</h1>
 
-<form action="/admin/stores/store" method="POST">
+<form action="{{ route('admin.stores.store') }}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
     <div class="form-group">
