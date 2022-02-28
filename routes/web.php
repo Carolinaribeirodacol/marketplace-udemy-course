@@ -105,6 +105,7 @@ Route::prefix('admin')->name('admin.')->namespace('App\Http\Controllers\Admin')-
 
 // get
 // put
+// post
 // patch
 // delete
 // options

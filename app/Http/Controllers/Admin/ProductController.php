@@ -23,7 +23,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = $this->product->paginate(10);
+        $products = Product::paginate(10);
 
         return view('admin.products.index', compact('products'));
     }
@@ -35,7 +35,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $store = Store::all(['id', 'name']);
+        $stores = Store::all(['id', 'name']);
 
         return view('admin.products.create', compact('stores'));
     }
@@ -48,18 +48,25 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $store = Store::find($data['store']);
+        $store->products()->create($data);
+
+        flash('Produto criado com sucesso!');
+        
+        return redirect()->route('admin.products.index'); 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $product
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        return $this->product;
     }
 
     /**
@@ -70,9 +77,9 @@ class ProductController extends Controller
      */
     public function edit($product)
     {
-        $product = $this->product->find($product);
+        $product = $this->product->findOrFail($product);
 
-        return view('admin.products.edit', compact('products'));
+        return view('admin.products.edit', compact('product'));
     }
 
     /**
@@ -84,17 +91,29 @@ class ProductController extends Controller
      */
     public function update(Request $request, $product)
     {
-        //
+        $data = $request->all();
+
+        $product = $this->product->find($data);
+        $product->update($data);
+
+        flash('Produto atualizado com sucesso!');
+        
+        return redirect()->route('admin.products.index'); 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($product)
     {
-        //
+        $product = $this->product->find($product);
+        $product->delete();
+
+        flash('Produto removido com sucesso!')->success();
+        
+        return redirect()->route('admin.products.index'); 
     }
 }

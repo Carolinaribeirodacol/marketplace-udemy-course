@@ -1,34 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Editar loja:</h1>
+<h1>Atualizar produto:</h1>
 
-<form action="{{ route('admin.products.update', ['product' => $product->id]) }}" method="POST">
-    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+<form action="{{ route('admin.products.update', ['product' => $product->id]) }}" method="post">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <input type="hidden" name="_method" value="PUT">
 
     <div class="form-group">
-        <label>Loja</label>
-        <input type="text" name="name" value="{{$product->name}}" class="form-control" />
+        <label>Nome</label>
+        <input type="text" name="name" class="form-control" value="{{ product->name }}">
     </div>
 
     <div class="form-group">
         <label>Descrição</label>
-        <input type="text" name="description" value="{{$product->description}}" class="form-control" />
+        <input type="text" name="description" class="form-control" value="{{ product->description }}">
     </div>
 
     <div class="form-group">
-        <label>Telefone</label>
-        <input type="string" name="phone" value="{{$product->phone}}" class="form-control" />
+        <label>Conteúdo</label>
+        <textarea class="form-control" name="body" id="product" cols="30" rows="10">
+        {{ product->body }}
+        </textarea>
     </div>
 
     <div class="form-group">
-        <label>Celular</label>
-        <input type="string" name="mobile_phone" value="{{$product->mobile_phone}}" class="form-control" />
+        <label>Preço</label>
+        <input type="number" name="price" class="form-control" value="R$ {{ product->price }}">
     </div>
 
     <div class="form-group">
         <label>Slug</label>
-        <input type="text" name="slug" value="{{$product->slug}}" class="form-control" />
+        <input type="text" name="slug" class="form-control" value="{{ product->slug }}">
     </div>
 
     <div style="margin-top: 15px">
