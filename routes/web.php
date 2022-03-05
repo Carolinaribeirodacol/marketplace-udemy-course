@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -96,6 +97,7 @@ Route::prefix('admin')->name('admin.')->namespace('App\Http\Controllers\Admin')-
     });
 
     Route::resource('products', 'ProductController');
+    Route::resource('stores', 'StoreController');
 });
 
 // prefix -> define uma parte de uma rota para um grupo que vai utilizar a mesma rota.
@@ -109,3 +111,7 @@ Route::prefix('admin')->name('admin.')->namespace('App\Http\Controllers\Admin')-
 // patch
 // delete
 // options
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
