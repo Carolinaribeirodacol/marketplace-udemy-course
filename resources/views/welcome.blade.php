@@ -33,6 +33,12 @@
                             <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
                         @endif
                     @endauth
+
+                    @guest
+                        <h1>Usuário não logado!</h1>
+                    @else
+                        <h1>Usuário logado!</h1>
+                    @endguest
                 </div>
             @endif
 
