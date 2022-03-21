@@ -8,7 +8,13 @@
 
     <div class="form-group">
         <label>Loja</label>
-        <input type="text" name="name" class="form-control" />
+        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}" />
+
+        @error('name')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+        @enderror
     </div>
 
     <div class="form-group">
