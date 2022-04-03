@@ -10,6 +10,7 @@ class Store extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'name',
         'phone',
         'mobile_phone',
@@ -20,7 +21,7 @@ class Store extends Model
     // Uma loja pertence a um usuário.
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     // Uma loja possui um ou mais produtos.

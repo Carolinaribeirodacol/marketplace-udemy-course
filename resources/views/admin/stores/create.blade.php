@@ -19,22 +19,22 @@
 
     <div class="form-group">
         <label>Descrição</label>
-        <input type="text" name="description" class="form-control" />
+        <input type="text" name="description" class="form-control @error('description') is-invalid @enderror" value="{{old('description')}}"" />
     </div>
 
     <div class="form-group">
         <label>Telefone</label>
-        <input type="number" name="phone" class="form-control" />
+        <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{old('phone')}}"" />
     </div>
 
     <div class="form-group">
         <label>Celular</label>
-        <input type="number" name="mobile_phone" class="form-control" />
+        <input type="number" name="mobile_phone" class="form-control @error('mobile_phone') is-invalid @enderror" value="{{old('mobile_phone')}}"" />
     </div>
 
     <div class="form-group">
         <label>Slug</label>
-        <input type="text" name="slug" class="form-control" />
+        <input type="text" name="slug" class="form-control @error('slug') is-invalid @enderror" value="{{old('slug')}}"" />
     </div>
 
     <div style="margin-top: 15px">
