@@ -50,7 +50,7 @@ class ProductController extends Controller
     {
         $data = $request->all();
 
-        $store = Store::find($data['store']);
+        $store = auth()->user()->store;
         $store->products()->create($data);
 
         flash('Produto criado com sucesso!');
@@ -64,9 +64,9 @@ class ProductController extends Controller
      * @param  int  $product
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(ProductRequest $request)
     {
-        return $this->product;
+        return $request->all();
     }
 
     /**
